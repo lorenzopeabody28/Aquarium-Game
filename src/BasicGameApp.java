@@ -41,12 +41,14 @@ public class BasicGameApp implements Runnable {
 	public Image nemoPic;
     public Image doryPic;
     public Image brucePic;
+    public Image hankPic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	public Nemo nemo1;
     public Dory dory1;
     public Bruce bruce1;
+    public Hank hank1;
 
 
    // Main method definition
@@ -70,12 +72,15 @@ public class BasicGameApp implements Runnable {
 		nemoPic = Toolkit.getDefaultToolkit().getImage("Nemo.jpg"); //load the picture
         nemo1 = new Nemo(200,100);
         nemo1.dx = 7;
-        dory1 = Toolkit.getDefaultToolkit().getImage("Dory.jpg"); //load the picture
+        doryPic = Toolkit.getDefaultToolkit().getImage("Dory.jpg"); //load the picture
         dory1 = new Dory(500,500);
         dory1.dx = 7;
-        bruce1 = Toolkit.getDefaultToolkit().getImage("Bruce.jpg"); //load the picture
+        brucePic = Toolkit.getDefaultToolkit().getImage("Bruce.jpg"); //load the picture
         bruce1 = new Bruce(500,500);
         bruce1.dx = 5;
+        hankPic = Toolkit.getDefaultToolkit().getImage("Hank.png"); //load the picture
+        hank1 = new Hank(450,250);
+        hank1.dx = 3;
 
 
 
@@ -114,6 +119,7 @@ public class BasicGameApp implements Runnable {
 		nemo1.move();
         dory1.move();
         bruce1.move();
+        hank1.move();
 
 	}
 	
@@ -167,6 +173,7 @@ public class BasicGameApp implements Runnable {
 		g.drawImage(nemoPic, nemo1.xpos, nemo1.ypos, nemo1.width, nemo1.height, null);
         g.drawImage(doryPic, dory1.xpos, dory1.ypos, dory1.width, dory1.height, null);
         g.drawImage(brucePic, bruce1.xpos, bruce1.ypos, bruce1.width, bruce1.height, null);
+        g.drawImage(hankPic, hank1.xpos, hank1.ypos, hank1.width, hank1.height, null);
 
         g.dispose();
 

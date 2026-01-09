@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Dory {
+public class Hank {
     //VARIABLE DECLARATION SECTION
     //Here's where you state which variables you are going to use.
     public String name;                //holds the name of the hero
@@ -22,7 +22,7 @@ public class Dory {
 
     //This is a SECOND constructor that takes 3 parameters.  This allows us to specify the hero's name and position when we build it.
     // if you put in a String, an int and an int the program will use this constructor instead of the one above.
-    public Dory(int pXpos, int pYpos) {
+    public Hank(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
         dx = 2;
