@@ -38,10 +38,13 @@ public class BasicGameApp implements Runnable {
    public JPanel panel;
    
 	public BufferStrategy bufferStrategy;
+    public Image backgroundPic;
 	public Image nemoPic;
     public Image doryPic;
     public Image brucePic;
     public Image hankPic;
+    public Image squirtPic;
+    public Image bloatPic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
@@ -49,6 +52,8 @@ public class BasicGameApp implements Runnable {
     public Dory dory1;
     public Bruce bruce1;
     public Hank hank1;
+    public Squirt squirt1;
+    public Bloat bloat1;
 
 
    // Main method definition
@@ -68,19 +73,27 @@ public class BasicGameApp implements Runnable {
       setUpGraphics();
        
       //variable and objects
-      //create (construct) the objects needed for the game and load up 
-		nemoPic = Toolkit.getDefaultToolkit().getImage("Nemo.jpg"); //load the picture
+      //create (construct) the objects needed for the game and load up
+        backgroundPic = Toolkit.getDefaultToolkit().getImage("CoralB.jpg");
+		nemoPic = Toolkit.getDefaultToolkit().getImage("Nemo.png"); //load the picture
         nemo1 = new Nemo(200,100);
         nemo1.dx = 7;
-        doryPic = Toolkit.getDefaultToolkit().getImage("Dory.jpg"); //load the picture
+        doryPic = Toolkit.getDefaultToolkit().getImage("Dory.png"); //load the picture
         dory1 = new Dory(500,500);
         dory1.dx = 7;
-        brucePic = Toolkit.getDefaultToolkit().getImage("Bruce.jpg"); //load the picture
+        brucePic = Toolkit.getDefaultToolkit().getImage("Bruce.png"); //load the picture
         bruce1 = new Bruce(500,500);
         bruce1.dx = 5;
         hankPic = Toolkit.getDefaultToolkit().getImage("Hank.png"); //load the picture
         hank1 = new Hank(450,250);
         hank1.dx = 3;
+        squirtPic = Toolkit.getDefaultToolkit().getImage("Squirt.png"); //load the picture
+        squirt1 = new Squirt (800,450);
+        squirt1.dx = 6;
+        bloatPic = Toolkit.getDefaultToolkit().getImage("Bloat.png"); //load the picture
+        bloat1 = new Bloat (200,100);
+        bloat1.dx = 6;
+
 
 
 
@@ -120,6 +133,8 @@ public class BasicGameApp implements Runnable {
         dory1.move();
         bruce1.move();
         hank1.move();
+        squirt1.move();
+        bloat1.move();
 
 	}
 	
@@ -169,11 +184,15 @@ public class BasicGameApp implements Runnable {
 		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
+        g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
+
       //draw the image of the astronaut
 		g.drawImage(nemoPic, nemo1.xpos, nemo1.ypos, nemo1.width, nemo1.height, null);
         g.drawImage(doryPic, dory1.xpos, dory1.ypos, dory1.width, dory1.height, null);
         g.drawImage(brucePic, bruce1.xpos, bruce1.ypos, bruce1.width, bruce1.height, null);
         g.drawImage(hankPic, hank1.xpos, hank1.ypos, hank1.width, hank1.height, null);
+        g.drawImage(squirtPic, squirt1.xpos, squirt1.ypos, squirt1.width, squirt1.height, null);
+        g.drawImage(bloatPic, bloat1.xpos, bloat1.ypos, bloat1.width, bloat1.height, null);
 
         g.dispose();
 
