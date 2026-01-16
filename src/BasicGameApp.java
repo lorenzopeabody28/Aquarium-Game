@@ -135,8 +135,20 @@ public class BasicGameApp implements Runnable {
         hank1.move();
         squirt1.move();
         bloat1.move();
-
+        crashing();
 	}
+    public void crashing () {
+        // if the astros crash into eachother
+        if (nemo1.hitbox.intersects(bruce1.hitbox)) {
+            System.out.println("Crash!!");
+            nemo1.dx = -nemo1.dx;
+            bruce1.dx = -bruce1.dx;
+            nemo1.dy = -nemo1.dy;
+            bruce1.dy = -bruce1.dy;
+            bruce1.isAlive = false;
+        }
+
+    }
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
    public void pause(int time ){
