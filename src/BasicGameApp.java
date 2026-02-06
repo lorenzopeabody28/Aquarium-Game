@@ -148,6 +148,14 @@ public class BasicGameApp implements Runnable {
             bruce1.isAlive = false;
         }
 
+        if (hank1.hitbox.intersects(dory1.hitbox)) {
+            System.out.println("Crash!!");
+            bruce1.dx = -bruce1.dx;
+            dory1.dx = -dory1.dx;
+            bruce1.dy = -bruce1.dy;
+            dory1.dy = -dory1.dy;
+            dory1.isAlive = false;
+        }
     }
 
    //Pauses or sleeps the computer for the amount specified in milliseconds
