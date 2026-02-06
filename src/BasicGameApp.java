@@ -126,17 +126,16 @@ public class BasicGameApp implements Runnable {
 	}
 
 
-	public void moveThings()
-	{
-      //calls the move( ) code in the objects
-		nemo1.move();
+	public void moveThings() {
+        //calls the move( ) code in the objects
+        nemo1.move();
         dory1.move();
         bruce1.move();
         hank1.move();
         squirt1.move();
         bloat1.move();
         crashing();
-	}
+    }
     public void crashing () {
         // if the astros crash into eachother
         if (nemo1.hitbox.intersects(bruce1.hitbox)) {
@@ -145,7 +144,7 @@ public class BasicGameApp implements Runnable {
             bruce1.dx = -bruce1.dx;
             nemo1.dy = -nemo1.dy;
             bruce1.dy = -bruce1.dy;
-            bruce1.isAlive = false;
+            bruce1.xpos = bruce1.hitbox.x;
         }
 
         if (hank1.hitbox.intersects(dory1.hitbox)) {
@@ -155,6 +154,7 @@ public class BasicGameApp implements Runnable {
             bruce1.dy = -bruce1.dy;
             dory1.dy = -dory1.dy;
             dory1.isAlive = false;
+            dory1.hitbox= false;
         }
     }
 
@@ -208,6 +208,7 @@ public class BasicGameApp implements Runnable {
         g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
         if (hank1.isAlive == true) {
             g.drawImage(squirtPic, squirt1.xpos, squirt1.ypos, squirt1.width, squirt1.height, null); //background
+
       //draw the image of the astronaut
 		g.drawImage(nemoPic, nemo1.xpos, nemo1.ypos, nemo1.width, nemo1.height, null);
         g.drawImage(doryPic, dory1.xpos, dory1.ypos, dory1.width, dory1.height, null);
@@ -215,6 +216,14 @@ public class BasicGameApp implements Runnable {
         g.drawImage(hankPic, hank1.xpos, hank1.ypos, hank1.width, hank1.height, null);
         g.drawImage(squirtPic, squirt1.xpos, squirt1.ypos, squirt1.width, squirt1.height, null);
         g.drawImage(bloatPic, bloat1.xpos, bloat1.ypos, bloat1.width, bloat1.height, null);
+
+        g.drawRect(bruce1.hitbox.x, bruce1.hitbox.y, bruce1.hitbox.width, bruce1.hitbox.height);
+        g.drawRect(nemo1.hitbox.x, nemo1.hitbox.y, nemo1.hitbox.width, nemo1.hitbox.height);
+        g.drawRect(dory1.hitbox.x, squirt1.hitbox.y, bloat1.hitbox.width, squirt1.hitbox.height);
+        g.drawRect(squirt1.hitbox.x, squirt1.hitbox.y, squirt1.hitbox.width, squirt1.hitbox.height);
+        g.drawRect(hank1.hitbox.x, hank1.hitbox.y, hank1.hitbox.width, hank1.hitbox.height);
+        g.drawRect(bloat1.hitbox.x, bloat1.hitbox.y, bloat1.hitbox.width, bloat1.hitbox.height);
+
 
         g.dispose();
 
