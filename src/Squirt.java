@@ -27,8 +27,8 @@ public class Squirt {
         ypos = pYpos;
         dx = 2;
         dy = 4;
-        width = 160;
-        height = 160;
+        width = 50;
+        height = 50;
         isAlive = true;
         hitbox = new Rectangle(xpos, ypos, width, height);
         isCrashing = false;

@@ -129,12 +129,15 @@ public class BasicGameApp implements Runnable {
 	public void moveThings() {
         //calls the move( ) code in the objects
         nemo1.move();
-        dory1.move();
+        if (dory1.isAlive) {
+            dory1.move();
+        }
         bruce1.move();
         hank1.move();
         squirt1.move();
         bloat1.move();
         crashing();
+
     }
     public void crashing () {
         // if the astros crash into eachother
@@ -147,14 +150,28 @@ public class BasicGameApp implements Runnable {
             bruce1.xpos = bruce1.hitbox.x;
         }
 
-        if (hank1.hitbox.intersects(dory1.hitbox)) {
+        if (dory1.hitbox != null && hank1.hitbox.intersects(dory1.hitbox)) {
             System.out.println("Crash!!");
             bruce1.dx = -bruce1.dx;
             dory1.dx = -dory1.dx;
             bruce1.dy = -bruce1.dy;
             dory1.dy = -dory1.dy;
             dory1.isAlive = false;
-            dory1.hitbox= false;
+            dory1.hitbox = null;
+        }
+        if (squirt1.hitbox.intersects(bruce1.hitbox)) {
+            System.out.println("Crash!!");
+            bruce1.dx = -bruce1.dx;
+            squirt1.dx = -squirt1.dx;
+            bruce1.dy = -bruce1.dy;
+            squirt1.dy = -squirt1.dy;
+            bruce1.xpos = bruce1.hitbox.x;
+            squirt1.width += 5;
+            squirt1.height += 5;
+            if (squirt1.width > 175 && squirt1.height > 175){
+            squirt1.isAlive=false;
+            squirt1.hitbox = null;
+            }
         }
     }
 
@@ -211,16 +228,24 @@ public class BasicGameApp implements Runnable {
 
       //draw the image of the astronaut
 		g.drawImage(nemoPic, nemo1.xpos, nemo1.ypos, nemo1.width, nemo1.height, null);
-        g.drawImage(doryPic, dory1.xpos, dory1.ypos, dory1.width, dory1.height, null);
+            if (dory1.isAlive) {
+                g.drawImage(doryPic, dory1.xpos, dory1.ypos, dory1.width, dory1.height, null);
+            }
         g.drawImage(brucePic, bruce1.xpos, bruce1.ypos, bruce1.width, bruce1.height, null);
         g.drawImage(hankPic, hank1.xpos, hank1.ypos, hank1.width, hank1.height, null);
-        g.drawImage(squirtPic, squirt1.xpos, squirt1.ypos, squirt1.width, squirt1.height, null);
+            if (squirt1.isAlive) {
+                g.drawImage(squirtPic, squirt1.xpos, squirt1.ypos, squirt1.width, squirt1.height, null);
+            }
         g.drawImage(bloatPic, bloat1.xpos, bloat1.ypos, bloat1.width, bloat1.height, null);
 
         g.drawRect(bruce1.hitbox.x, bruce1.hitbox.y, bruce1.hitbox.width, bruce1.hitbox.height);
         g.drawRect(nemo1.hitbox.x, nemo1.hitbox.y, nemo1.hitbox.width, nemo1.hitbox.height);
-        g.drawRect(dory1.hitbox.x, squirt1.hitbox.y, bloat1.hitbox.width, squirt1.hitbox.height);
-        g.drawRect(squirt1.hitbox.x, squirt1.hitbox.y, squirt1.hitbox.width, squirt1.hitbox.height);
+            if (dory1.hitbox != null) {
+                g.drawRect(dory1.hitbox.x, dory1.hitbox.y, dory1.hitbox.width, dory1.hitbox.height);
+            }
+            if (squirt1.hitbox != null) {
+                g.drawRect(squirt1.hitbox.x, squirt1.hitbox.y, squirt1.hitbox.width, squirt1.hitbox.height);
+            }
         g.drawRect(hank1.hitbox.x, hank1.hitbox.y, hank1.hitbox.width, hank1.hitbox.height);
         g.drawRect(bloat1.hitbox.x, bloat1.hitbox.y, bloat1.hitbox.width, bloat1.hitbox.height);
 
