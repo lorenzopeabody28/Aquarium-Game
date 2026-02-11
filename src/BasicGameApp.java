@@ -24,31 +24,32 @@ import javax.swing.JPanel;
 
 public class BasicGameApp implements Runnable {
 
-   //Variable Definition Section
-   //Declare the variables used in the program
-   //You can set their initial values too
+    //Variable Definition Section
+    //Declare the variables used in the program
+    //You can set their initial values too
 
-   //Sets the width and height of the program window
-	final int WIDTH = 1000;
-	final int HEIGHT = 700;
+    //Sets the width and height of the program window
+    final int WIDTH = 1000;
+    final int HEIGHT = 700;
 
-   //Declare the variables needed for the graphics
-	public JFrame frame;
-	public Canvas canvas;
-   public JPanel panel;
+    //Declare the variables needed for the graphics
+    public JFrame frame;
+    public Canvas canvas;
+    public JPanel panel;
 
-	public BufferStrategy bufferStrategy;
+    public BufferStrategy bufferStrategy;
     public Image backgroundPic;
-	public Image nemoPic;
+    public Image nemoPic;
     public Image doryPic;
     public Image brucePic;
     public Image hankPic;
     public Image squirtPic;
     public Image bloatPic;
+    public Image winPic;
 
-   //Declare the objects used in the program
-   //These are things that are made up of more than one variable type
-	public Nemo nemo1;
+    //Declare the objects used in the program
+    //These are things that are made up of more than one variable type
+    public Nemo nemo1;
     public Dory dory1;
     public Bruce bruce1;
     public Hank hank1;
@@ -56,55 +57,85 @@ public class BasicGameApp implements Runnable {
     public Bloat bloat1;
 
 
-   // Main method definition
-   // This is the code that runs first and automatically
-	public static void main(String[] args) {
-		BasicGameApp ex = new BasicGameApp();   //creates a new instance of the game
-		new Thread(ex).start();                 //creates a threads & starts up the code in the run( ) method
-	}
+    // Main method definition
+    // This is the code that runs first and automatically
+    public static void main(String[] args) {
+        BasicGameApp ex = new BasicGameApp();   //creates a new instance of the game
+        new Thread(ex).start();                 //creates a threads & starts up the code in the run( ) method
+    }
 
 
-   // Constructor Method
-   // This has the same name as the class
-   // This section is the setup portion of the program
-   // Initialize your variables and construct your program objects here.
-	public BasicGameApp() {
+    // Constructor Method
+    // This has the same name as the class
+    // This section is the setup portion of the program
+    // Initialize your variables and construct your program objects here.
+    public BasicGameApp() {
 
-      setUpGraphics();
+        setUpGraphics();
 
-      //variable and objects
-      //create (construct) the objects needed for the game and load up
+        //variable and objects
+        //create (construct) the objects needed for the game and load up
+        int randu;
+        int randv;
+        int randw;
+        int randx;
+        int randy;
+        int randz;
+        randu = (int)(Math.random() * 950) + 1;
+        randv = (int)(Math.random() * 650) + 1;
+        randw = (int)(Math.random() * 950) + 1;
+        randx = (int)(Math.random() * 650) + 1;
+        randy = (int)(Math.random() * 950) + 1;
+        randz = (int)(Math.random() * 650) + 1;
+
         backgroundPic = Toolkit.getDefaultToolkit().getImage("CoralB.jpg");
-		nemoPic = Toolkit.getDefaultToolkit().getImage("Nemo.png"); //load the picture
-        nemo1 = new Nemo(200,100);
+        if (bloat1.isAlive=true && bruce1.isAlive=false && dory1.isAlive=false && hank1.isAlive=false && nemo1.isAlive=false && squirt1.isAlive=false) {
+            winPic = Toolkit.getDefaultToolkit().getImage("Movieposter.jpg");
+            else if(bloat1.isAlive=false && bruce1.isAlive=true && dory1.isAlive=false && hank1.isAlive=false && nemo1.isAlive=false && squirt1.isAlive=false){
+                winPic = Toolkit.getDefaultToolkit().getImage("Movieposter.jpg");
+            }
+            else if(bloat1.isAlive=false && bruce1.isAlive=false && dory1.isAlive=true && hank1.isAlive=false && nemo1.isAlive=false && squirt1.isAlive=false){
+                winPic = Toolkit.getDefaultToolkit().getImage("Movieposter.jpg");
+            }
+            else if(bloat1.isAlive=false && bruce1.isAlive=false && dory1.isAlive=false && hank1.isAlive=true && nemo1.isAlive=false && squirt1.isAlive=false) {
+                winPic = Toolkit.getDefaultToolkit().getImage("Movieposter.jpg");
+            }
+            else if(bloat1.isAlive=false && bruce1.isAlive=false && dory1.isAlive=false && hank1.isAlive=false && nemo1.isAlive=true && squirt1.isAlive=false) {
+                winPic = Toolkit.getDefaultToolkit().getImage("Movieposter.jpg");
+            }
+            else if(bloat1.isAlive=false && bruce1.isAlive=false && dory1.isAlive=false && hank1.isAlive=false && nemo1.isAlive=false && squirt1.isAlive=true) {
+                winPic = Toolkit.getDefaultToolkit().getImage("Movieposter.jpg");
+            }
+            else{
+                System.out.println("ERROR!!!!!!");
+            }
+            }
+        nemoPic = Toolkit.getDefaultToolkit().getImage("Nemo.png"); //load the picture
+        nemo1 = new Nemo(randu, randv);
         nemo1.dx = 7;
         doryPic = Toolkit.getDefaultToolkit().getImage("Dory.png"); //load the picture
-        dory1 = new Dory(500,500);
+        dory1 = new Dory(randw, randx);
         dory1.dx = 7;
         brucePic = Toolkit.getDefaultToolkit().getImage("Bruce.png"); //load the picture
-        bruce1 = new Bruce(500,500);
+        bruce1 = new Bruce(randy, randz);
         bruce1.dx = 5;
         hankPic = Toolkit.getDefaultToolkit().getImage("Hank.png"); //load the picture
-        hank1 = new Hank(450,250);
+        hank1 = new Hank(randu, randx);
         hank1.dx = 3;
         squirtPic = Toolkit.getDefaultToolkit().getImage("Squirt.png"); //load the picture
-        squirt1 = new Squirt (800,450);
+        squirt1 = new Squirt(randw, randz);
         squirt1.dx = 6;
         bloatPic = Toolkit.getDefaultToolkit().getImage("Bloat.png"); //load the picture
-        bloat1 = new Bloat (200,100);
+        bloat1 = new Bloat(randy, randz);
         bloat1.dx = 6;
-
-
-
-
 
 
         //asteroid1 = new Asteroid(467, randy);
         //asteroid1.dx = - asteroid1.dx;
-       // asteroid2 = new Asteroid(randx, 267);;
+        // asteroid2 = new Asteroid(randx, 267);;
 
 
-	}// BasicGameApp()
+    }// BasicGameApp()
 
 
 //*******************************************************************************
@@ -112,21 +143,21 @@ public class BasicGameApp implements Runnable {
 //
 // put your code to do things here.
 
-   // main thread
-   // this is the code that plays the game after you set things up
-	public void run() {
+    // main thread
+    // this is the code that plays the game after you set things up
+    public void run() {
 
-      //for the moment we will loop things forever.
-		while (true) {
+        //for the moment we will loop things forever.
+        while (true) {
 
-         moveThings();  //move all the game objects
-         render();  // paint the graphics
-         pause(20); // sleep for 10 ms
-		}
-	}
+            moveThings();  //move all the game objects
+            render();  // paint the graphics
+            pause(20); // sleep for 10 ms
+        }
+    }
 
 
-	public void moveThings() {
+    public void moveThings() {
         //calls the move( ) code in the objects
         nemo1.move();
         if (dory1.isAlive) {
@@ -139,7 +170,8 @@ public class BasicGameApp implements Runnable {
         crashing();
 
     }
-    public void crashing () {
+
+    public void crashing() {
         // if the astros crash into eachother
         if (nemo1.hitbox.intersects(bruce1.hitbox)) {
             System.out.println("Crash!!");
@@ -150,109 +182,102 @@ public class BasicGameApp implements Runnable {
             bruce1.xpos = bruce1.hitbox.x;
         }
 
-        if (dory1.hitbox != null && hank1.hitbox.intersects(dory1.hitbox)) {
+        if (bruce1.hitbox.intersects(dory1.hitbox) && bruce1.isAlive && dory1.isAlive) {
             System.out.println("Crash!!");
-            bruce1.dx = -bruce1.dx;
+            hank1.dx = -bruce1.dx;
             dory1.dx = -dory1.dx;
             bruce1.dy = -bruce1.dy;
             dory1.dy = -dory1.dy;
             dory1.isAlive = false;
-            dory1.hitbox = null;
         }
-        if (squirt1.hitbox.intersects(bruce1.hitbox)) {
+        if (bloat1.hitbox.intersects(bruce1.hitbox) && bloat1.isAlive && bruce1.isAlive) {
             System.out.println("Crash!!");
             bruce1.dx = -bruce1.dx;
-            squirt1.dx = -squirt1.dx;
+            bloat1.dx = -bloat1.dx;
             bruce1.dy = -bruce1.dy;
-            squirt1.dy = -squirt1.dy;
+            bloat1.dy = -bloat1.dy;
             bruce1.xpos = bruce1.hitbox.x;
-            squirt1.width += 5;
-            squirt1.height += 5;
-            if (squirt1.width > 175 && squirt1.height > 175){
-            squirt1.isAlive=false;
-            squirt1.hitbox = null;
+            bloat1.width += 5;
+            bloat1.height += 5;
+            if (bloat1.width > 175 && bloat1.height > 175) {
+                bloat1.isAlive = false;
             }
         }
     }
 
-   //Pauses or sleeps the computer for the amount specified in milliseconds
-   public void pause(int time ){
-   		//sleep
-			try {
-				Thread.sleep(time);
-			} catch (InterruptedException e) {
+    //Pauses or sleeps the computer for the amount specified in milliseconds
+    public void pause(int time) {
+        //sleep
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
 
-			}
-   }
+        }
+    }
 
-   //Graphics setup method
-   private void setUpGraphics() {
-      frame = new JFrame("Application Template");   //Create the program window or frame.  Names it.
+    //Graphics setup method
+    private void setUpGraphics() {
+        frame = new JFrame("Application Template");   //Create the program window or frame.  Names it.
 
-      panel = (JPanel) frame.getContentPane();  //sets up a JPanel which is what goes in the frame
-      panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));  //sizes the JPanel
-      panel.setLayout(null);   //set the layout
+        panel = (JPanel) frame.getContentPane();  //sets up a JPanel which is what goes in the frame
+        panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));  //sizes the JPanel
+        panel.setLayout(null);   //set the layout
 
-      // creates a canvas which is a blank rectangular area of the screen onto which the application can draw
-      // and trap input events (Mouse and Keyboard events)
-      canvas = new Canvas();
-      canvas.setBounds(0, 0, WIDTH, HEIGHT);
-      canvas.setIgnoreRepaint(true);
+        // creates a canvas which is a blank rectangular area of the screen onto which the application can draw
+        // and trap input events (Mouse and Keyboard events)
+        canvas = new Canvas();
+        canvas.setBounds(0, 0, WIDTH, HEIGHT);
+        canvas.setIgnoreRepaint(true);
 
-      panel.add(canvas);  // adds the canvas to the panel.
+        panel.add(canvas);  // adds the canvas to the panel.
 
-      // frame operations
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //makes the frame close and exit nicely
-      frame.pack();  //adjusts the frame and its contents so the sizes are at their default or larger
-      frame.setResizable(false);   //makes it so the frame cannot be resized
-      frame.setVisible(true);      //IMPORTANT!!!  if the frame is not set to visible it will not appear on the screen!
+        // frame operations
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //makes the frame close and exit nicely
+        frame.pack();  //adjusts the frame and its contents so the sizes are at their default or larger
+        frame.setResizable(false);   //makes it so the frame cannot be resized
+        frame.setVisible(true);      //IMPORTANT!!!  if the frame is not set to visible it will not appear on the screen!
 
-      // sets up things so the screen displays images nicely.
-      canvas.createBufferStrategy(2);
-      bufferStrategy = canvas.getBufferStrategy();
-      canvas.requestFocus();
-      System.out.println("DONE graphic setup");
+        // sets up things so the screen displays images nicely.
+        canvas.createBufferStrategy(2);
+        bufferStrategy = canvas.getBufferStrategy();
+        canvas.requestFocus();
+        System.out.println("DONE graphic setup");
 
-   }
+    }
 
 
-	//paints things on the screen using bufferStrategy
-	private void render() {
-		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
-		g.clearRect(0, 0, WIDTH, HEIGHT);
+    //paints things on the screen using bufferStrategy
+    private void render() {
+        Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
+        g.clearRect(0, 0, WIDTH, HEIGHT);
 
 
         g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
-        if (hank1.isAlive == true) {
+        if (hank1.isAlive) {
             g.drawImage(squirtPic, squirt1.xpos, squirt1.ypos, squirt1.width, squirt1.height, null); //background
 
-      //draw the image of the astronaut
-		g.drawImage(nemoPic, nemo1.xpos, nemo1.ypos, nemo1.width, nemo1.height, null);
+            //draw the image of the astronaut
+            g.drawImage(nemoPic, nemo1.xpos, nemo1.ypos, nemo1.width, nemo1.height, null);
             if (dory1.isAlive) {
                 g.drawImage(doryPic, dory1.xpos, dory1.ypos, dory1.width, dory1.height, null);
             }
-        g.drawImage(brucePic, bruce1.xpos, bruce1.ypos, bruce1.width, bruce1.height, null);
-        g.drawImage(hankPic, hank1.xpos, hank1.ypos, hank1.width, hank1.height, null);
-            if (squirt1.isAlive) {
-                g.drawImage(squirtPic, squirt1.xpos, squirt1.ypos, squirt1.width, squirt1.height, null);
+            g.drawImage(brucePic, bruce1.xpos, bruce1.ypos, bruce1.width, bruce1.height, null);
+            g.drawImage(hankPic, hank1.xpos, hank1.ypos, hank1.width, hank1.height, null);
+            g.drawImage(squirtPic, squirt1.xpos, squirt1.ypos, squirt1.width, squirt1.height, null);
+            if (bloat1.isAlive) {
+                g.drawImage(bloatPic, bloat1.xpos, bloat1.ypos, bloat1.width, bloat1.height, null);
             }
-        g.drawImage(bloatPic, bloat1.xpos, bloat1.ypos, bloat1.width, bloat1.height, null);
+            g.drawRect(bruce1.hitbox.x, bruce1.hitbox.y, bruce1.hitbox.width, bruce1.hitbox.height);
+            g.drawRect(nemo1.hitbox.x, nemo1.hitbox.y, nemo1.hitbox.width, nemo1.hitbox.height);
+            g.drawRect(dory1.hitbox.x, dory1.hitbox.y, dory1.hitbox.width, dory1.hitbox.height);
+            g.drawRect(squirt1.hitbox.x, squirt1.hitbox.y, squirt1.hitbox.width, squirt1.hitbox.height);
+            g.drawRect(hank1.hitbox.x, hank1.hitbox.y, hank1.hitbox.width, hank1.hitbox.height);
+            g.drawRect(bloat1.hitbox.x, bloat1.hitbox.y, bloat1.hitbox.width, bloat1.hitbox.height);
 
-        g.drawRect(bruce1.hitbox.x, bruce1.hitbox.y, bruce1.hitbox.width, bruce1.hitbox.height);
-        g.drawRect(nemo1.hitbox.x, nemo1.hitbox.y, nemo1.hitbox.width, nemo1.hitbox.height);
-            if (dory1.hitbox != null) {
-                g.drawRect(dory1.hitbox.x, dory1.hitbox.y, dory1.hitbox.width, dory1.hitbox.height);
+
+                g.dispose();
+
+                bufferStrategy.show();
             }
-            if (squirt1.hitbox != null) {
-                g.drawRect(squirt1.hitbox.x, squirt1.hitbox.y, squirt1.hitbox.width, squirt1.hitbox.height);
-            }
-        g.drawRect(hank1.hitbox.x, hank1.hitbox.y, hank1.hitbox.width, hank1.hitbox.height);
-        g.drawRect(bloat1.hitbox.x, bloat1.hitbox.y, bloat1.hitbox.width, bloat1.hitbox.height);
-
-
-        g.dispose();
-
-		bufferStrategy.show();
-	}
-}
-}
+        }
+    }

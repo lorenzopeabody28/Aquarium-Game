@@ -32,23 +32,22 @@ public class Hank {
         isAlive = true;
         hitbox = new Rectangle(xpos, ypos, width, height);
         isCrashing = false;
-
     } // constructor
 
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
 
-        if (xpos < 0) { //bounce off the left wall
-            dx = -dx;
+        if (ypos > 700){ // wrap when hit the bootom wall
+            ypos = 0;
         }
-        if (xpos > 1000-width) { //bounce off right wall
-            dx = -dx;
+        if (ypos < 0) { //wrap when hit the top wall
+            ypos = 700;
         }
-        if (ypos < 0) {    //bounce off top
-            dy = -dy;
+        if (xpos > 1000) { //wrap when hit the right wall
+            xpos = 0;
         }
-        if (ypos > 700-height) { //bounce off bottom
-            dy = -dy;
+        if (xpos < 0) {  // wrap when hit left wall
+            xpos = 1000;
         }
         xpos = xpos + dx;
         ypos = ypos + dy;
