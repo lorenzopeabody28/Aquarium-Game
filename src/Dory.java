@@ -3,14 +3,14 @@ import java.awt.*;
 public class Dory {
     //VARIABLE DECLARATION SECTION
     //Here's where you state which variables you are going to use.
-    public String name;                //holds the name of the hero
+    public String name;                //holds the name of the character
     public int xpos;                //the x position
     public int ypos;                //the y position
-    public int dx;                    //the speed of the hero in the x direction
-    public int dy;                    //the speed of the hero in the y direction
+    public int dx;                    //the speed of the character in the x direction
+    public int dy;                    //the speed of the character in the y direction
     public int width;
     public int height;
-    public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
+    public boolean isAlive;            //a boolean to denote if the character is alive or dead.
     public Rectangle hitbox;
     public boolean isCrashing;
 
@@ -20,35 +20,35 @@ public class Dory {
     // A constructor builds the object when called and sets variable values.
 
 
-    //This is a SECOND constructor that takes 3 parameters.  This allows us to specify the hero's name and position when we build it.
+    //This is a SECOND constructor that takes 2 parameters.  This allows us to specify the character's name and position when we build it.
     // if you put in a String, an int and an int the program will use this constructor instead of the one above.
     public Dory(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
         dx = 2;
         dy = 4;
-        width = 160;
-        height = 160;
+        width = 80;
+        height = 80;
         isAlive = true;
         hitbox = new Rectangle(xpos, ypos, width, height);
         isCrashing = false;
 
     } // constructor
 
-    //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
+    //The move method.  Everytime this is run (or "called") the character's x position and y position change by dx and dy
     public void move() {
 
-        if (ypos > 700){ // wrap when hit the bootom wall
+        if (ypos > 840){ // wrap when hit the bootom wall
             ypos = 0;
         }
         if (ypos < 0) { //wrap when hit the top wall
-            ypos = 700;
+            ypos = 840;
         }
-        if (xpos > 1000) { //wrap when hit the right wall
+        if (xpos > 1200) { //wrap when hit the right wall
             xpos = 0;
         }
         if (xpos < 0) {  // wrap when hit left wall
-            xpos = 1000;
+            xpos = 1200;
         }
 
         xpos = xpos + dx;
